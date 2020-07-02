@@ -1,26 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './shared/Header'
+import {renderRoutes} from 'react-router-config'
+import {ToastProvider} from 'react-toast-notifications'
 
-function App() {
+const App = ({ route }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ToastProvider autoDismiss={true} autoDismissTimeout={5000} placement='top-center'>
+      <div className='bg-gray-300 overflow-hidden'>
+          <Header />
+          {renderRoutes(route.routes)}
+      </div>
+    </ToastProvider>
+  )
 }
 
 export default App;
